@@ -9,16 +9,19 @@
 
 ## Steps
 
-### 0. Build `holochain` and `dna-util`
+### 0. Build `holochain`, `dna-util` and `lair-keystore`
 
-You'll need two binaries to develop DNAs: the actual Holochain conductor binary, and the dna-util library which assists with assembling Wasms into a DNA file.
+You'll need three binaries to develop DNAs: the actual Holochain conductor binary, and the dna-util library which assists with assembling Wasms into a DNA file.
 
 - Clone the repo: `git clone https://github.com/holochain/holochain && cd ./holochain`
 - Ensure correct version of rust tool-chain via nix: `nix-shell` (this can be done by entering `nix-shell` at the root of the holochain directory.)
 - Install conductor binary: `cargo install --path crates/holochain`
 - Install dna-util binary: `cargo install --path crates/dna_util`
 
-You should now have `holochain` and `dna-util` on your PATH.
+- Clone the repo: `git clone https://github.com/holochain/lair && cd ./lair/crates/lair_keystore`
+- Install `lair-keystore` binary: `cargo install --path .`
+
+You should now have `holochain`, `dna-util` and `lair-keystore` on your PATH.
 
 ### 1. Write your Zomes
 
@@ -55,6 +58,7 @@ If you are using Tryorama to run tests against your DNA, you can jump over to th
 
 If you are running Holochain using your own setup, you'll have to have a deeper understanding of Holochain than is in scope for this tutorial. Roughly speaking, you'll need to:
 
+- make sure `lair-keystore` is running in the background
 - make sure `holochain` is running with a configuration that includes an admin interface websocket port
 - send a properly encoded [`InstallApp`](https://github.com/holochain/holochain/blob/66ca899d23842cadebc214d591475987f4af4f43/crates/holochain/src/conductor/api/api_external/admin_interface.rs#L240) command over the websocket
 - be sure to `ActivateApp` and `AttachAppInterface` as well.
