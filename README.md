@@ -11,12 +11,16 @@
 
 ### 0. Build `holochain`, `dna-util` and `lair-keystore`
 
-You'll need three binaries to develop DNAs: the actual Holochain conductor binary, and the dna-util library which assists with assembling Wasms into a DNA file.
+You'll need three binaries to develop DNAs: 
+
+Build the actual Holochain conductor binary, and the dna-util library which assists with assembling Wasms into a DNA file.
 
 - Clone the repo: `git clone https://github.com/holochain/holochain && cd ./holochain`
 - Ensure correct version of rust tool-chain via nix: `nix-shell` (this can be done by entering `nix-shell` at the root of the holochain directory.)
 - Install conductor binary: `cargo install --path crates/holochain`
 - Install dna-util binary: `cargo install --path crates/dna_util`
+
+Build `lair-keystore`:
 
 - Clone the repo: `git clone https://github.com/holochain/lair && cd ./lair/crates/lair_keystore`
 - Install `lair-keystore` binary: `cargo install --path .`
